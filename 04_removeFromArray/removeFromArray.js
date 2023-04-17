@@ -1,6 +1,9 @@
-const removeFromArray = function(array, unwantedValue) {
-    function isNotUnwantedValue(arrayValue) {return arrayValue != unwantedValue};
-    let newArray = array.filter(isNotUnwantedValue);
+const removeFromArray = function(array, ...unwantedValues) {
+    let newArray = array;
+    for (unwantedValue of unwantedValues) {
+        function isNotUnwantedValue(arrayValue) {return arrayValue !== unwantedValue};
+        newArray = newArray.filter(isNotUnwantedValue);
+    };
     return newArray;
 };
 
